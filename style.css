@@ -1572,6 +1572,23 @@ input, select {
     color: var(--color-gray-900);
 }
 
+/* ================================
+   PRIVACY POLICY SECTION
+   ================================ */
+.privacy-policy {
+    padding: var(--spacing-20) var(--spacing-6);
+    background-color: var(--color-white);
+}
+
+.privacy-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.privacy-content {
+    text-align: center;
+}
+
 @media (max-width: 480px) {
     .popup-card {
         padding: var(--spacing-8) var(--spacing-6);
