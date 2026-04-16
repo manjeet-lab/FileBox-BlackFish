@@ -1218,3 +1218,37 @@ sections.forEach(function(section) {
 })();
 
 console.log('FileBox by BlackFish - Initialized');
+
+// Firebase import
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+// Config
+const firebaseConfig = {
+  apiKey: "AIzaSyDN5wdRbpVy6VYgykhGGiYJG_dh9_57iZA",
+  authDomain: "filebox-rating.firebaseapp.com",
+  projectId: "filebox-rating",
+  storageBucket: "filebox-rating.firebasestorage.app",
+  messagingSenderId: "558068310894",
+  appId: "1:558068310894:web:42d0648a233a3ebc4b577f",
+  measurementId: "G-RB95HSXCZL"
+};
+
+// Init Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const stars = document.querySelectorAll(".star-btn");
+
+stars.forEach(star => {
+  star.addEventListener("click", async () => {
+    const rating = star.getAttribute("data-value");
+
+    await addDoc(collection(db, "ratings"), {
+      value: Number(rating),
+      time: new Date()
+    });
+
+    alert("Rating saved!");
+  });
+});
