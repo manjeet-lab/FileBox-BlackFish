@@ -1278,7 +1278,7 @@ async function loadAverageRating() {
     avgText.textContent = "No ratings yet";
   } else {
     const avg = (total / count).toFixed(1);
-    avgText.textContent = `⭐ ${avg} / 5 (${count} reviews)`;
+    avgText.textContent = `${avg} / 5 (${count} reviews)`;
   }
 }
 
