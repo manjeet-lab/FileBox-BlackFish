@@ -78,6 +78,16 @@
     --z-modal: 200;
 }
 
+::selection {
+  background: black;
+  color: white;
+}
+
+::-moz-selection {
+  background: black;
+  color: white;
+}
+
 /* Reset & Base */
 *, *::before, *::after {
     box-sizing: border-box;
