@@ -1221,8 +1221,7 @@ console.log('FileBox by BlackFish - Initialized');
 
 // Firebase import
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
-
+import { getFirestore, addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 // Config
 const firebaseConfig = {
   apiKey: "AIzaSyDN5wdRbpVy6VYgykhGGiYJG_dh9_57iZA",
@@ -1239,16 +1238,49 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const stars = document.querySelectorAll(".star-btn");
+const thanksMsg = document.getElementById("rating-thanks");
 
 stars.forEach(star => {
   star.addEventListener("click", async () => {
-    const rating = star.getAttribute("data-value");
+    const rating = Number(star.getAttribute("data-value"));
 
+    // Firebase me save
     await addDoc(collection(db, "ratings"), {
-      value: Number(rating),
-      time: new Date()
+      value: rating,
+      createdAt: new Date()
     });
 
-    alert("Rating saved!");
+    // UI feedback
+    thanksMsg.style.display = "block";
+    setTimeout(() => {
+      thanksMsg.style.display = "none";
+    }, 2000);
+
+    // Average update
+    loadAverageRating();
   });
 });
+
+const avgText = document.getElementById("rating-average");
+
+async function loadAverageRating() {
+  const querySnapshot = await getDocs(collection(db, "ratings"));
+
+  let total = 0;
+  let count = 0;
+
+  querySnapshot.forEach(doc => {
+    total += doc.data().value;
+    count++;
+  });
+
+  if (count === 0) {
+    avgText.textContent = "No ratings yet";
+  } else {
+    const avg = (total / count).toFixed(1);
+    avgText.textContent = `⭐ ${avg} / 5 (${count} reviews)`;
+  }
+}
+
+// Page load pe call karo
+loadAverageRating();
