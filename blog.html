@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Blog – File Compression, Image Formats & PDF Tips | FileBox</title>
+
+  <meta name="description"
+    content="Learn how to compress files without losing quality, understand image formats like JPG, PNG, and WEBP, stay safe with online compression, and reduce PDF size step by step.">
+
+  <meta name="keywords"
+    content="file compression tips, compress without quality loss, JPG vs PNG vs WEBP, online file compression safety, reduce PDF size, image formats explained, pdf compressor guide">
+
+  <meta name="author" content="BlackFish">
+  <meta name="robots" content="index, follow">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8301117879057104"
+     crossorigin="anonymous"></script>
+
+  <style>
+    /* ================================
+       Blog Page – Minimal Extra Styles
+       ================================ */
+
+    .blog-page {
+      min-height: 100vh;
+      background-color: var(--color-white);
+      padding-bottom: var(--spacing-24);
+    }
+
+    .blog-header {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--spacing-12) var(--spacing-6) var(--spacing-8);
+      text-align: center;
+    }
+
+    .blog-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-2) var(--spacing-4);
+      background-color: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--border-radius-full);
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-600);
+      margin-bottom: var(--spacing-6);
+    }
+
+    .blog-header-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      color: var(--color-gray-900);
+      line-height: 1.2;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .blog-header-sub {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-500);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .blog-divider {
+      max-width: 800px;
+      margin: 0 auto var(--spacing-12);
+      padding: 0 var(--spacing-6);
+      border: none;
+      border-top: 1px solid var(--color-gray-100);
+    }
+
+    .blog-toc {
+      max-width: 800px;
+      margin: 0 auto var(--spacing-12);
+      padding: 0 var(--spacing-6);
+    }
+
+    .blog-toc-inner {
+      background-color: var(--color-gray-50);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--border-radius-xl);
+      padding: var(--spacing-6) var(--spacing-8);
+    }
+
+    .blog-toc-title {
+      font-size: var(--font-size-sm);
+      font-weight: 700;
+      color: var(--color-gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .blog-toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-2);
+    }
+
+    .blog-toc-list li a {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-700);
+      font-weight: 500;
+      transition: color var(--transition-fast);
+    }
+
+    .blog-toc-list li a:hover {
+      color: var(--color-gray-900);
+    }
+
+    .blog-toc-num {
+      display: inline-block;
+      width: 22px;
+      color: var(--color-gray-400);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+    }
+
+    .blog-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-6);
+    }
+
+    .blog-article {
+      margin-bottom: var(--spacing-20);
+      padding-bottom: var(--spacing-16);
+      border-bottom: 1px solid var(--color-gray-100);
+    }
+
+    .blog-article:last-child {
+      border-bottom: none;
+    }
+
+    .blog-article-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-5);
+    }
+
+    .blog-article-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background-color: var(--color-gray-900);
+      color: var(--color-white);
+      border-radius: var(--border-radius-full);
+      font-size: var(--font-size-xs);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .blog-article-tag {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      color: var(--color-gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .blog-article h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--color-gray-900);
+      line-height: 1.25;
+      margin-bottom: var(--spacing-6);
+    }
+
+    .blog-article h2 {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      color: var(--color-gray-800);
+      line-height: 1.4;
+      margin-top: var(--spacing-8);
+      margin-bottom: var(--spacing-3);
+    }
+
+    .blog-article p {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-600);
+      line-height: 1.8;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .blog-article p:last-child {
+      margin-bottom: 0;
+    }
+
+    .blog-article .blog-conclusion {
+      margin-top: var(--spacing-8);
+      padding: var(--spacing-5) var(--spacing-6);
+      background-color: var(--color-gray-50);
+      border-left: 3px solid var(--color-gray-900);
+      border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    }
+
+    .blog-article .blog-conclusion p {
+      margin-bottom: 0;
+      font-size: var(--font-size-base);
+      color: var(--color-gray-700);
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      .blog-header {
+        padding: var(--spacing-8) var(--spacing-4) var(--spacing-6);
+        text-align: left;
+      }
+
+      .blog-header-badge {
+        display: none;
+      }
+
+      .blog-toc {
+        padding: 0 var(--spacing-4);
+        margin-bottom: var(--spacing-8);
+      }
+
+      .blog-toc-inner {
+        padding: var(--spacing-5) var(--spacing-5);
+      }
+
+      .blog-content {
+        padding: 0 var(--spacing-4);
+      }
+
+      .blog-article h1 {
+        font-size: var(--font-size-2xl);
+      }
+
+      .blog-article h2 {
+        font-size: var(--font-size-lg);
+      }
+
+      .blog-divider {
+        padding: 0 var(--spacing-4);
+        margin-bottom: var(--spacing-8);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo-link">
+        <img src="logo.png" alt="BlackFish Logo" class="logo-img">
+        <div class="logo-text">
+          <span class="logo-name">FileBox</span>
+          <span class="logo-tagline">by BlackFish</span>
+        </div>
+      </a>
+
+      <nav class="nav-desktop" id="navDesktop">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#tools" class="nav-link">Tools</a>
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="navMobile">
+      <a href="index.html#home" class="nav-link-mobile">Home</a>
+      <a href="index.html#tools" class="nav-link-mobile">Tools</a>
+      <a href="index.html#features" class="nav-link-mobile">Features</a>
+      <a href="index.html#faq" class="nav-link-mobile">FAQ</a>
+      <a href="index.html#about" class="nav-link-mobile">About</a>
+      <a href="blog.html" class="nav-link-mobile active">Blog</a>
+    </nav>
+  </header>
+
+  <!-- Blog Content -->
+  <div class="blog-page">
+
+    <!-- Blog Header -->
+    <div class="blog-header">
+      <div class="blog-header-badge">
+        <span>FileBox Blog</span>
+        <span class="badge-dot"></span>
+        <span>Tips &amp; Guides</span>
+      </div>
+      <h1 class="blog-header-title">Learn File Compression &amp; Conversion</h1>
+      <p class="blog-header-sub">Simple, beginner-friendly guides to help you work smarter with files, images, and PDFs — all in your browser.</p>
+    </div>
+
+    <hr class="blog-divider">
+
+    <!-- Table of Contents -->
+    <div class="blog-toc">
+      <div class="blog-toc-inner">
+        <p class="blog-toc-title">In This Page</p>
+        <ul class="blog-toc-list">
+          <li><a href="#article-1"><span class="blog-toc-num">01.</span> How to Compress Files Without Losing Quality</a></li>
+          <li><a href="#article-2"><span class="blog-toc-num">02.</span> Best Image Formats Explained (JPG vs PNG vs WEBP)</a></li>
+          <li><a href="#article-3"><span class="blog-toc-num">03.</span> Is Online File Compression Safe?</a></li>
+          <li><a href="#article-4"><span class="blog-toc-num">04.</span> Reduce PDF Size Easily – Step by Step Guide</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Articles -->
+    <div class="blog-content">
+
+      <!-- Article 1 -->
+      <article class="blog-article" id="article-1">
+        <div class="blog-article-meta">
+          <span class="blog-article-num">01</span>
+          <span class="blog-article-tag">Compression Guide</span>
+        </div>
+
+        <h1>How to Compress Files Without Losing Quality</h1>
+
+        <h2>What Does "Lossless" Compression Mean?</h2>
+        <p>When you compress a file, you are making it smaller. But not all compression methods are the same. Lossless compression reduces file size without removing any data. When you open the file again, it looks exactly the same as the original.</p>
+        <p>This is the best type of compression for documents, text files, and images where every detail matters. Think of it like folding a piece of paper — the content stays the same, just packaged more efficiently.</p>
+
+        <h2>What Is Lossy Compression and When Is It Okay?</h2>
+        <p>Lossy compression removes some data to make the file even smaller. For photos you share online, a small quality reduction is often invisible to the human eye. A photo that was 5 MB can become 500 KB with almost no visible difference.</p>
+        <p>The key is finding the right balance. You want a small file without a noticeable quality drop. Most modern tools let you control this with a quality slider or a target size setting.</p>
+
+        <h2>Tips for Compressing Images Without Visible Quality Loss</h2>
+        <p>Start with the highest quality original file you have. Compressing an already-compressed image tends to create visible artifacts, like blurry edges or patchy colors. Always work from the original source.</p>
+        <p>Set a target size that is reasonable. If your image is 4 MB, aiming for 400 KB is fine. Aiming for 10 KB will likely hurt quality. A good rule of thumb: try to compress by 70–80% first and see if the result still looks sharp.</p>
+
+        <h2>How to Compress PDF Files Without Losing Readability</h2>
+        <p>PDFs can be large when they contain high-resolution images or embedded fonts. Compressing a PDF often means reducing the resolution of images inside it, not removing text or pages.</p>
+        <p>For most business documents, emails, or digital sharing, a compressed PDF at medium quality is perfectly readable. Only when printing at large sizes does very high resolution matter.</p>
+
+        <h2>Best Practices for Compressing Text Files</h2>
+        <p>Text files (.txt, .csv, .html) compress very well — often by 60–90% — because text has a lot of repeated patterns. Tools like ZIP compression use these patterns to shrink files significantly without losing a single character.</p>
+        <p>Always use a modern compression tool and choose the format that fits your use case. ZIP is universally compatible. For maximum compression without worrying about compatibility, newer formats like 7z or BROTLI work well.</p>
+
+        <div class="blog-conclusion">
+          <p>Compressing files without losing quality is about choosing the right method for the right file type. Use lossless compression for documents and original photos. Use lossy compression for web images where a slight quality trade-off is acceptable. FileBox makes it simple — just upload, set your target size, and download.</p>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="blog-article" id="article-2">
+        <div class="blog-article-meta">
+          <span class="blog-article-num">02</span>
+          <span class="blog-article-tag">Image Formats</span>
+        </div>
+
+        <h1>Best Image Formats Explained (JPG vs PNG vs WEBP)</h1>
+
+        <h2>Why Does the Image Format Matter?</h2>
+        <p>The image format you choose affects three things: file size, quality, and compatibility. Picking the wrong format can mean a blurry image, a file that is too large, or a photo that does not display in some browsers.</p>
+        <p>Understanding the difference between the three most common formats — JPG, PNG, and WEBP — helps you make the right choice every time.</p>
+
+        <h2>JPG – The Standard for Photos</h2>
+        <p>JPG (also written as JPEG) is the most widely used image format in the world. It uses lossy compression, which means some data is removed when you save the file. This makes it ideal for photographs and complex images where small quality differences are not noticeable.</p>
+        <p>JPG files are supported by every device, browser, and application. If you are sharing a photo, sending it by email, or uploading to social media, JPG is almost always the right choice. The trade-off is that each time you re-save a JPG, it loses a little more quality.</p>
+
+        <h2>PNG – Best for Images with Transparency</h2>
+        <p>PNG uses lossless compression, so no quality is lost when you save it. This makes it ideal for logos, screenshots, graphics, and images where sharp edges and text need to remain crisp.</p>
+        <p>The biggest advantage of PNG is transparency support. If you need a logo with a clear background, PNG is what you need. The downside is that PNG files are usually much larger than JPG files for the same image.</p>
+
+        <h2>WEBP – The Modern Web Format</h2>
+        <p>WEBP is a newer format developed by Google specifically for the web. It supports both lossless and lossy compression, offers transparency like PNG, and produces smaller files than both JPG and PNG at the same quality level.</p>
+        <p>On average, WEBP files are 25–35% smaller than equivalent JPG files and up to 50% smaller than PNG files. This makes a real difference for websites — smaller images load faster, which improves the experience for your visitors.</p>
+
+        <h2>Which Format Should You Choose?</h2>
+        <p>Use JPG for: photographs, camera images, social media posts, email attachments. Use PNG for: logos, screenshots, digital art, anything with transparency. Use WEBP for: web images, banners, product photos on e-commerce sites.</p>
+        <p>FileBox lets you convert between all three formats directly in your browser. You can upload a PNG and export it as WEBP, or convert a JPG to PNG if you need transparency support — all without installing any software.</p>
+
+        <div class="blog-conclusion">
+          <p>JPG, PNG, and WEBP each have their strengths. Match the format to your use case: photos go as JPG, graphics with transparency go as PNG, and web content works best as WEBP. When in doubt, try converting and compare the file sizes — you might be surprised how much smaller WEBP can be.</p>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="blog-article" id="article-3">
+        <div class="blog-article-meta">
+          <span class="blog-article-num">03</span>
+          <span class="blog-article-tag">Privacy &amp; Safety</span>
+        </div>
+
+        <h1>Is Online File Compression Safe?</h1>
+
+        <h2>The Main Concern: Where Does Your File Go?</h2>
+        <p>When most people think of online file tools, they imagine uploading their file to a server somewhere in the world. That server processes it and sends it back. This raises a legitimate concern: who has access to your file while it is on that server?</p>
+        <p>This is why it is important to know how the tool you use actually works. Not all online compressors are the same — some upload your files, and some process everything directly in your browser.</p>
+
+        <h2>Browser-Based vs Server-Based Processing</h2>
+        <p>Browser-based tools like FileBox never send your file anywhere. All processing happens on your own device using JavaScript running in your browser. Your file is never uploaded to any server. This means no one can access, store, or misuse it.</p>
+        <p>Server-based tools send your file to a remote server for processing. This is not necessarily unsafe, but it does mean the company behind the tool has access to your file, at least temporarily. Their privacy policy determines what happens to it after processing.</p>
+
+        <h2>What to Look For in a Safe Online Compressor</h2>
+        <p>Look for tools that explicitly state "no uploads" or "browser-based processing." This is the clearest sign that your file never leaves your device. If a tool requires you to create an account just to compress a file, that is a red flag — your data is likely being stored.</p>
+        <p>Check whether the tool uses HTTPS. A secure connection (shown as a padlock icon in your browser) protects data while it travels between your device and the server — but for truly private processing, browser-based is the gold standard.</p>
+
+        <h2>Is It Safe for Sensitive Documents?</h2>
+        <p>For sensitive files — contracts, tax documents, personal photos, medical records — you should always use a browser-based tool. With a browser-based compressor, there is zero risk of your file being exposed because it never leaves your device.</p>
+        <p>FileBox was built with this in mind. There are no servers, no uploads, no accounts. Your files stay on your device from start to finish, and are never transmitted anywhere.</p>
+
+        <h2>Common Myths About Online File Compression Safety</h2>
+        <p>Myth: "Using incognito mode keeps my uploads private." This is false. Incognito only prevents your browser from storing history — it does not affect where your files are sent or who can access them on the server side.</p>
+        <p>Myth: "If the site uses HTTPS, my file is safe." HTTPS encrypts the connection, but the file still reaches the server. The server operator can access it once it arrives. Browser-based processing avoids this entirely.</p>
+
+        <div class="blog-conclusion">
+          <p>Online file compression is safe when you use the right tool. Browser-based tools that process files locally on your device — like FileBox — offer the highest level of privacy because your files never leave your device. For everyday files, reputable server-based tools are generally fine. But for sensitive documents, always choose a local, browser-based solution.</p>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="blog-article" id="article-4">
+        <div class="blog-article-meta">
+          <span class="blog-article-num">04</span>
+          <span class="blog-article-tag">PDF Guide</span>
+        </div>
+
+        <h1>Reduce PDF Size Easily – Step by Step Guide</h1>
+
+        <h2>Why Are PDFs Sometimes So Large?</h2>
+        <p>PDFs can grow surprisingly large for a few reasons. The most common cause is embedded images. When you create a PDF from a Word document or export a presentation, all the images inside are often saved at very high resolution — much higher than necessary for screen viewing.</p>
+        <p>Other causes include embedded fonts, multiple layers, form fields, and comments. A 100-page PDF can easily become 50 MB if it was created without compression in mind. The good news is that most of this size can be reduced without any visible change to the document.</p>
+
+        <h2>Step 1 – Identify the File Size and Your Target</h2>
+        <p>Before compressing, check your current file size. Right-click the file and select "Properties" (Windows) or "Get Info" (Mac) to see the size. Decide on a target. For email attachments, many providers have a 10 MB or 25 MB limit. For web uploads, smaller is always better for loading speed.</p>
+        <p>A reasonable compression target for most documents is 50–80% of the original size. If your PDF is 10 MB, aiming for 2–5 MB is realistic without sacrificing readability.</p>
+
+        <h2>Step 2 – Use a PDF Compressor</h2>
+        <p>Open FileBox and switch to the Compressor tool. Drag and drop your PDF file into the upload area, or click to browse your files. Once the file is loaded, enter your target size in kilobytes (KB). For example, if your PDF is 8 MB and you want it under 2 MB, type 2000 in the target field.</p>
+        <p>Click "Compress" and wait a moment. FileBox will process the file entirely in your browser. No upload, no waiting for a server. When done, you will see the original and compressed sizes side by side.</p>
+
+        <h2>Step 3 – Review and Download</h2>
+        <p>After compression, take a moment to check the result. Open the compressed PDF and scroll through a few pages. Text should still be sharp and readable. Images may look slightly softer but should not be blurry or pixelated for normal compression levels.</p>
+        <p>If the quality looks good, click the download button to save the compressed file. The filename will include a label to distinguish it from the original, so you won't accidentally overwrite your source file.</p>
+
+        <h2>Tips for Better PDF Compression Results</h2>
+        <p>If your compressed PDF is still larger than expected, the file likely contains many high-resolution images. In that case, try a more aggressive target size — just check the result carefully to make sure it still meets your quality needs.</p>
+        <p>For scanned documents, compression tends to work especially well because scanned pages are essentially images. You can often reduce a scanned PDF by 70–80% with minimal quality loss when viewed on screen. Only for printed large-format documents does this trade-off become more noticeable.</p>
+
+        <div class="blog-conclusion">
+          <p>Reducing PDF size does not have to be complicated. With a browser-based tool like FileBox, the whole process takes under a minute: upload your PDF, set a target size, compress, and download. No software to install, no files sent to a server, and no compromises on privacy. Try it for free and see how small your PDF can get.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="logo.png" alt="BlackFish Logo" class="footer-logo">
+        <div class="footer-brand-text">
+          <span class="footer-name">FileBox</span>
+          <span class="footer-tagline">by BlackFish Creative</span>
+        </div>
+      </div>
+
+      <nav class="footer-links">
+        <a href="index.html#home" class="footer-link">Home</a>
+        <a href="index.html#tools" class="footer-link">Tools</a>
+        <a href="index.html#features" class="footer-link">Features</a>
+        <a href="index.html#faq" class="footer-link">FAQ</a>
+        <a href="index.html#about" class="footer-link">About</a>
+        <a href="blog.html" class="footer-link">Blog</a>
+      </nav>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/lessgoo.manjeet/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
+        <a href="https://blackfish-ai.en.uptodown.com/android" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Website">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        </a>
+        <a href="https://github.com/manjeet-lab" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 FileBox-By BlackFish — All rights reserved — Developed By Manjeet Gupta!!</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var header = document.getElementById('header');
+    var hamburger = document.getElementById('hamburger');
+    var navMobile = document.getElementById('navMobile');
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    hamburger.addEventListener('click', function () {
+      hamburger.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
+      navMobile.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
