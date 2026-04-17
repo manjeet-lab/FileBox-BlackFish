@@ -1224,7 +1224,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/fireba
 import { getFirestore, addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 // Config
 const firebaseConfig = {
-  apiKey: "AIzaSyDN5wdRbpVy6VYgykhGGiYJG_dh9_57iZA",
+  apiKey: "MY_API_KEY",
   authDomain: "filebox-rating.firebaseapp.com",
   projectId: "filebox-rating",
   storageBucket: "filebox-rating.firebasestorage.app",
